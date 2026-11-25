@@ -13,7 +13,6 @@ class Storage:
         os.makedirs(os.path.dirname(self.filename), exist_ok=True)
 
     def load_results(self):
-        """Load previously saved typing test results."""
 
         try:
             with open(self.filename, "r") as file:
@@ -23,7 +22,6 @@ class Storage:
             return []
 
     def save_results(self, results):
-        """Save all typing test results to JSON."""
 
         with open(self.filename, "w") as file:
             json.dump(results, file, indent=4)
@@ -45,7 +43,6 @@ class Storage:
         self.save_results(results)
 
     def clear_results(self):
-        """Delete all stored typing test results."""
 
         self.save_results([])
 

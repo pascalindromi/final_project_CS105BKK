@@ -8,11 +8,14 @@ from prompt_toolkit.layout import Layout
 from prompt_toolkit.layout.containers import Window
 from prompt_toolkit.layout.controls import FormattedTextControl
 
+from baboonmod.passage import Passage
+
 
 class TypingTest:
 
     def __init__(self, target_text):
-        self.target_text = target_text
+        self.passage = target_text
+        self.target_text = target_text.content
         self.typed_text = ""
         self.total_mistakes = 0
         self.start_time = None
@@ -25,7 +28,7 @@ class TypingTest:
         if minutes == 0:
             return 0
 
-        return (len(self.typed_text) / 5) / minutes
+        return len(self.typed_text.split()) / minutes
 
     def calculate_accuracy(self):
         if len(self.typed_text) == 0:
@@ -102,7 +105,7 @@ class TypingTest:
 
         self.typed_text += character
 
-        if self.typed_text.casefold() == self.target_text.casefold():
+        if len(self.typed_text) == len(self.target_text):
             self.completed = True
             event.app.exit()
 
