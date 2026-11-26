@@ -1,0 +1,1 @@
+"""Core models, persistence, settings, and user-interface helpers."""

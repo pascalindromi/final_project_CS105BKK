@@ -1,19 +1,39 @@
 BaboonType
 ==========
 
-BaboonType is a terminal typing-speed practice app. It presents a short passage
-from Wikipedia, or a bundled local passage if Wikipedia cannot be reached. It
-measures typing speed and accuracy, then saves completed test results for later
-review. we're almost done! i just need to add some pytest, and actually make settings do something.
-which is going to be even more modules! i think this project has too many modules but whatever.
+BaboonType is a terminal typing-speed practice app. Users can choose Wikipedia
+passages, which fall back to bundled local passages if Wikipedia is unavailable,
+or select local-only mode for offline use. Case-sensitive typing can also be
+enabled in Settings; it is off by default. The app measures typing speed and
+accuracy, then saves completed test results for later review.
 
-Install the dependencies from the FINAL_PROJECT directory:
+Requirements
+------------
 
-    python -m pip install -r requirements.txt
+Use Python 3.12 or newer.
 
-Then run the app from the BaboonType directory:
+Windows (PowerShell)
+--------------------
 
-    python main.py
+From the FINAL_PROJECT directory:
+
+    py -3.12 -m venv .venv
+    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+    cd BaboonType
+    ..\.venv\Scripts\python.exe main.py
+
+macOS (Terminal)
+----------------
+
+From the FINAL_PROJECT directory:
+
+    python3.12 -m venv .venv
+    ./.venv/bin/python -m pip install -r requirements.txt
+    cd BaboonType
+    ../.venv/bin/python main.py
+
+If you have a newer Python version, use its version-specific launcher instead
+(for example, `py -3.13` on Windows or `python3.13` on macOS).
 
 Modules | for the conveniece of those, who wants to look at the code of this project
 =======
@@ -32,14 +52,17 @@ baboonmod/storage.py
     Loads and saves typing-test results in data/results.json.
 
 baboonmod/history.py
-    Displays, handles pages, and deletes saved test history, and shows test details.
+    Displays and deletes saved history; choose a test by its number on the page.
 
 baboonmod/ui.py
     Displays the main menu, About screen, and passage source information.
 
+baboonmod/settings.py
+    Loads and saves the passage source and case-sensitive typing preference.
+
 baboonmod/exceptions.py
     Defines custom exceptions for invalid menu choices, page navigation, missing
-    tests, and passage-provider errors.
+    tests, passage-provider errors, and settings errors.
 
 provider/wikipedia_fetch.py
     Fetches a random Wikipedia article extract, limits it to 25 words, and
@@ -49,7 +72,16 @@ provider/local_passages.py
     Selects a random passage from the bundled local passage collection.
 
 data/passages.json
-    Stores the local passages used when the Wikipedia source is unavailable.
+    Stores named local passages used when local-only mode is selected or
+    Wikipedia is unavailable.
+
+data/default_settings.json
+    Supplies initial settings; the current defaults use local passages and
+    case-insensitive typing.
+
+data/settings.json
+    Created on first launch to store the user's passage-source and
+    case-sensitivity preferences.
 
 data/results.json
     Stores completed typing-test results and their passage attribution.

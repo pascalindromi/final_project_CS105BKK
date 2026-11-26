@@ -1,25 +1,31 @@
 [
   {
+    "passage_name": "A Quiet Morning",
     "content": "A quiet morning begins with cool air, soft light, and birds. Maya opens the window and plans a slow walk through the garden.",
     "word_count": 23
   },
   {
+    "passage_name": "The Riverside Trail",
     "content": "On Saturday, Lina packs a small bag, fills her bottle, and checks the map. She wants to follow the riverside trail before the city wakes.",
     "word_count": 25
   },
   {
+    "passage_name": "A Rainy Day at the Library",
     "content": "The old clock above the library ticks steadily. Outside, rain taps the glass, while inside, a student finds a quiet corner and reads until noon.",
     "word_count": 25
   },
   {
+    "passage_name": "Stories Under the Tree",
     "content": "After lunch, friends gather beneath a wide tree. They trade stories, share oranges, and listen as the wind moves through the leaves above them.",
     "word_count": 24
   },
   {
+    "passage_name": "Sunset Across the Lake",
     "content": "A small boat crosses the lake at sunset. Its wake draws a line across the water, then fades as evening colors spread over the hills.",
     "word_count": 25
   },
   {
+    "passage_name": "Before the Workshop Opens",
     "content": "Before the workshop opens, Arun sweeps the floor and lays fresh paper beside the pencils. Soon, neighbors arrive to sketch plants from the courtyard together.",
     "word_count": 25
   }

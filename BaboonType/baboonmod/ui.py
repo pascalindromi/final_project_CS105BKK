@@ -1,4 +1,7 @@
+"""Render terminal menus, settings, and passage information."""
+
 def display_menu():
+    """Print the main menu."""
     print("\n\n\n")
     print("-------------------------------------------------------")
     print("--------------------BABOON-TYPE------------------------")
@@ -11,6 +14,7 @@ def display_menu():
 
 
 def display_about():
+    """Show application information and wait for the user to return."""
     print("\n\n\n")
     print("-------------------------------------------------------")
     print("----------------------ABOUT----------------------------")
@@ -30,6 +34,7 @@ def display_about():
 
 
 def display_passage_source(passage):
+    """Display a passage and its source or license information."""
     print(f"\nPassage: {passage.title} ({passage.word_count} words)")
     if passage.source_url:
         print(f"Source: {passage.source_url}")
@@ -37,3 +42,23 @@ def display_passage_source(passage):
         print("This excerpt has been shortened for the typing test.")
     else:
         print(f"Source: {passage.source_name}")
+
+
+def display_settings(passage_source, case_sensitive):
+    """Display current preferences and return the user's menu choice."""
+    print("\n\n\n")
+    print("-------------------------------------------------------")
+    print("----------------------SETTINGS-------------------------")
+    if passage_source == "wikipedia":
+        print("Current source: Wikipedia (uses local passages if unavailable)")
+    else:
+        print("Current source: Local passages only")
+    if case_sensitive:
+        print("Case-sensitive typing: On")
+    else:
+        print("Case-sensitive typing: Off")
+    print("1. Use Wikipedia with local fallback")
+    print("2. Use local passages only (offline)")
+    print("3. Toggle case-sensitive typing")
+    print("4. Return to the main menu")
+    return input("Choose a setting: ").strip()

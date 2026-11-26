@@ -38,11 +38,26 @@
 - Added custom exceptions for invalid menu choices, page navigation, missing tests, and passage-provider errors.
 - Added a project `.gitignore` and `requirements.txt` for `prompt_toolkit` and `requests`.
 - Updated `README.txt` with setup instructions and module descriptions.
-- Deferred the automated test folder for now. Checked the local passage data and provider locally; no live Wikipedia API request was made.
-
-### Comparison with the public GitHub version
-Compared with the public repository at [pascalindromi/final_project_CS105BKK](https://github.com/pascalindromi/final_project_CS105BKK), HEAD `6d0910b` as checked on 26 November 2026, the hosted version is still the earlier implementation. It uses a fixed passage in `main.py`, keeps history and display functions there, and estimates WPM from character count. The local working version adds passage providers, local fallback passages, source attribution, the `Passage` class, separate history and UI modules, and word-based WPM. These local changes are not yet reflected in that GitHub version.
 
 ### Future work
 - Consider adding automated tests if a custom typing input handler is developed.
 - Test the Wikipedia provider against the live API before relying on it for a release.
+
+### QUICK FIX BEFORE FINAL COMMIT
+- Added `StorageError` and translated expected directory, read, write, decoding,
+  and JSON-serialization failures into user-facing storage errors.
+- Results JSON is checked for a list of records with the fields and value types
+  used by history; invalid JSON is no longer silently treated as empty history.
+- Results and local passage paths use `Path`; malformed local passage records
+  are skipped with a warning, and the provider reports an error if no usable
+  records remain.
+- The main loop now catches storage failures and handles EOF/Ctrl+C at ordinary
+  prompts without a traceback.
+- Added a default passage-source setting and a persisted user setting; the
+  Settings menu can select Wikipedia with local fallback or local-only mode.
+- Added a persisted capitalization-matching setting, off by default, that can
+  be toggled in Settings and controls both typing input and display feedback.
+- Typing-test names now use passage names, and history uses 1–10 selections
+  for the entries currently displayed. For a more intuitive approach.
+- Added a custom `hidden_cursor` context manager so the terminal cursor is
+  restored even when the typing application exits unexpectedly.

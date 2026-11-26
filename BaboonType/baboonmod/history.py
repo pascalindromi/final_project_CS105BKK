@@ -1,7 +1,10 @@
+"""Display and navigate saved typing-test results."""
+
 from baboonmod.exceptions import PageNavigationError, TestNotFoundError
 
 
 def show_stats(current_storage):
+    """Show paginated test history and handle history actions."""
     tests_per_page = 10
     current_page = 0
 
@@ -21,9 +24,9 @@ def show_stats(current_storage):
             print("             No typing tests recorded yet.")
 
         else:
-            for result in page_results:
+            for selection, result in enumerate(page_results, start=1):
                 print(
-                    f"{result['test_name']:<20} | "
+                    f"{selection}. {get_test_name(result):<35} | "
                     f"{result['date']} {result['time']}"
                 )
 
@@ -31,7 +34,7 @@ def show_stats(current_storage):
         print(f"                           Page {current_page + 1}/{total_pages}")
         print("-------------------------------------------------------")
         print("[N] Next page    [P] Previous page    [Q] Quit")
-        print("Type the name of the test to view the test information")
+        print("Enter a number from 1 to 10 to view a test.")
         print("        Type 'DEL' to delete all test data")
 
         choice = input("Enter your choice: ").strip().lower()
@@ -58,34 +61,43 @@ def show_stats(current_storage):
         elif choice == "q":
             break
 
-        else:
+        elif choice.isdigit():
             try:
-                view_test(choice, current_storage)
+                view_test(int(choice), page_results)
             except TestNotFoundError as error:
                 print(error)
                 input("Press Enter to continue...")
 
+        else:
+            print("Enter a number from 1 to 10, N, P, Q, or DEL.")
+            input("Press Enter to continue...")
 
-def view_test(test_name, current_storage):
-    results = current_storage.load_results()
 
-    # Find the requested test.
-    selected_test = None
+def get_test_name(result):
+    """Return the most descriptive available name for a test result."""
+    return (
+        result.get("passage_name") or result.get("passage_title") or result["test_name"]
+    )
 
-    for result in results:
-        if result["test_name"] == test_name:
-            selected_test = result
-            break
 
-    if selected_test is None:
-        raise TestNotFoundError(f"No test named {test_name!r} was found.")
+def view_test(selection, page_results):
+    """Display the selected result from the current history page."""
+    if not page_results:
+        raise TestNotFoundError("There are no tests to select on this page.")
+
+    if selection < 1 or selection > len(page_results):
+        raise TestNotFoundError(
+            f"Choose a test number from 1 to {len(page_results)} on this page."
+        )
+
+    selected_test = page_results[selection - 1]
 
     # Display test information.
     print("-------------------------------------------------------")
     print("---------------------TEST DETAILS----------------------")
     print("-------------------------------------------------------")
 
-    print(f"Test name:       {selected_test['test_name']}")
+    print(f"Test name:       {get_test_name(selected_test)}")
     print(f"Date:            {selected_test['date']}")
     print(f"Time:            {selected_test['time']}")
     print("-------------------------------------------------------")

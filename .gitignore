@@ -9,3 +9,4 @@ venv/
 
 # Local typing-test history
 /BaboonType/data/results.json
+/BaboonType/data/settings.json
