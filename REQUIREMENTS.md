@@ -68,9 +68,11 @@ project addresses the requirement and notes any remaining gap.
 7. **Tests (S10).** At least 8 pytest tests for normal cases, limits, and bad
    input; `python -m pytest` passes.
 
-   **Project integration:** The project currently has no pytest test files.
+   **Project integration:** `test/` contains focused pytest modules for
+   passages, settings, storage, typing behavior, and local passage loading.
+   the suite has 71 tests total.
 
-   **Status: Not met.**
+   **Status: Met.**
 
 8. **Code quality and Git (S11).** PEP 8 names, docstrings, a `.gitignore`, and
    a clean `python -m ruff check .`. For an individual project, at least 5

@@ -1,6 +1,8 @@
 
 # Development Log
 
+- the purpose of this md, is to show the gradual development progress for the baboontype program.
+
 ## 24 November 2026 
 
 ### Completed
@@ -61,3 +63,7 @@
   for the entries currently displayed. For a more intuitive approach.
 - Added a custom `hidden_cursor` context manager so the terminal cursor is
   restored even when the typing application exits unexpectedly.
+- Added docstrings across the whole project.
+
+### FINAL DEVELOPMENT LOG
+
