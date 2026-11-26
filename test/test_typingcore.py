@@ -53,6 +53,14 @@ def test_accuracy_reflects_mistakes():
     assert typing_test.calculate_accuracy() == 75
 
 
+def test_accuracy_does_not_go_below_zero_after_retries():
+    typing_test = make_test("a")
+    typing_test.typed_text = "a"
+    typing_test.total_mistakes = 2
+
+    assert typing_test.calculate_accuracy() == 0
+
+
 def test_character_matching_ignores_case_by_default():
     assert make_test().characters_match("h", "H") is True
 
