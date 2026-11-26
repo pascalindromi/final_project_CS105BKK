@@ -35,6 +35,14 @@ From the FINAL_PROJECT directory:
 If you have a newer Python version, use its version-specific launcher instead
 (for example, `py -3.13` on Windows or `python3.13` on macOS).
 
+Tests and lint
+--------------
+
+From the FINAL_PROJECT directory, run:
+
+    python -m pytest
+    python -m ruff check .
+
 Modules | for the conveniece of those, who wants to look at the code of this project
 =======
 

@@ -60,7 +60,7 @@ class TypingTest:
             (len(self.typed_text) - self.total_mistakes) / len(self.typed_text)
         ) * 100
 
-        return accuracy
+        return max(accuracy, 0)
 
     def get_display(self):
         """Generate the passage with colours and a live timer."""
@@ -94,7 +94,7 @@ class TypingTest:
         formatted_text.append(("", f"Mistakes: {self.total_mistakes}\n"))
         formatted_text.append(("", f"WPM: {self.calculate_wpm(elapsed):.1f} "))
         formatted_text.append(
-            ("", f"Accuracy: {max(self.calculate_accuracy(), 0):.0f}%")
+            ("", f"Accuracy: {self.calculate_accuracy():.0f}%")
         )
 
         return formatted_text

@@ -70,7 +70,7 @@ project addresses the requirement and notes any remaining gap.
 
    **Project integration:** `test/` contains focused pytest modules for
    passages, settings, storage, typing behavior, and local passage loading.
-   the suite has 71 tests total.
+   The suite has 72 tests total.
 
    **Status: Met.**
 
@@ -81,7 +81,7 @@ project addresses the requirement and notes any remaining gap.
 
    **Project integration:** The repository has a `.gitignore` and uses
    descriptive names, docstring coverage is complete, Ruff has
-   been run and returns green. The next commit should be the 5th commit
+   been run and returns green. The current history has 7 commits.
 
    **Status: met**
 
