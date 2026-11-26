@@ -1,6 +1,8 @@
 
 # Development Log
 
+- the purpose of this md, is to show the gradual development progress for the baboontype program.
+
 ## 24 November 2026 
 
 ### Completed
@@ -61,3 +63,23 @@
   for the entries currently displayed. For a more intuitive approach.
 - Added a custom `hidden_cursor` context manager so the terminal cursor is
   restored even when the typing application exits unexpectedly.
+- Added docstrings across the whole project.
+
+### FINAL DEVELOPMENT LOG
+
+## 27 November 2026
+
+### Completed
+- Added five pytest modules under `test/` covering passages, settings, storage,
+  typing behavior, and local passage loading, with 71 passing test cases.
+- Added `pytest.ini` to configure test discovery and make the application
+  modules importable when pytest runs from `FINAL_PROJECT`.
+- Added fixtures to the local passage tests for temporary JSON files and
+  deterministic passage selection.
+- Added `pytest` and `ruff` to `requirements.txt` alongside the existing
+  runtime dependencies, and updated the test status in `REQUIREMENTS.md`.
+- Removed previously tracked `.pyc` files from Git's index; existing
+  `.gitignore` rules already exclude Python bytecode, while local copies remain.
+- Verified with `python -m pytest` (71 passed) and `python -m ruff check .`
+  (passed).
+
